@@ -1,0 +1,18 @@
+
+<div class="row " style="background-color: #ffffe6;">
+        <div class=" col-md-6 mt-3 col-lg-4" *ngFor="let news of newslist">
+                <div class="m-auto card  text-white" style="max-width: 18rem;" (click)="opennewpage()">
+                    <img class="card-img" [src]= news.image alt="Card image">
+                    <div class="card-img-overlay">
+                    <h5 class="card-title">{{news.title}}</h5>
+                    <p class="card-text">{{news.subtitle}}</p>
+                    </div>
+                    <p class="card-text" style="height:27px;"
+                    [ngStyle]="{'background-color':getColor(news.category)}"
+                    >{{news.content}}</p>
+                </div>
+        </div>
+</div>
+
+
+ 

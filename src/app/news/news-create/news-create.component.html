@@ -1,0 +1,46 @@
+<form (submit)="onAddNews(newsForm)" #newsForm="ngForm">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input class="form-control" id="title" placeholder="Title" ngModel required minlength="5" name="title" #title="ngModel" [ngClass]="{solid:title.invalid && title.touched}" >
+      <span *ngIf="title.invalid && title.touched" class="alert alert-danger">Required field</span>
+    </div>
+    <div class="form-group">
+        <label for="subtitle">Subtitle</label>
+        <input class="form-control" id="subtitle" placeholder="subtitle" required name="subtitle" ngModel #subtitle="ngModel" >
+      </div>
+      <span *ngIf="subtitle.invalid && subtitle.touched" class="text-danger">Required field</span>
+    <div class="form-group"  >
+      <label for="categry">Category of news</label>
+      <select class="form-control" id="category" required  name='category' ngModel #category="ngModel" >
+        <option>-</option>
+        <option>Business</option>
+        <option>Sport</option>
+        <option>Politics</option>
+        <option>Chronicle</option>
+        <option>Weather</option>
+        <option>World news</option>
+        <option>Local news</option>
+      </select>
+    </div>
+    <span *ngIf="category.invalid && category.touched" class="text-danger">category is required</span>
+    <div class="form-group">
+      <label for="image">Image</label>
+      <input class="form-control" id="image" placeholder="image" name="image" ngModel>
+    </div>
+    <div class="form-group" >
+      <div class="input-group">
+          <input class="form-control" placeholder="yyyy-mm-dd"
+              name="date" ngModel ngbDatepicker #d="ngbDatepicker">
+          <div class="input-group-append">
+          <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+          </div>
+      </div>   
+    </div>
+    <div class="form-group" >
+      <label for="content">News content</label>
+      <textarea class="form-control" id="content" rows="5" name='content' required ngModel #content="ngModel"></textarea>
+    </div>
+    <span *ngIf="content.invalid && content.touched" class="text-danger">content is required</span>
+    <br>
+      <button type="submit" class="btn btn-primary" >Submit</button>
+  </form>
